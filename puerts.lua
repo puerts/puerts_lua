@@ -33,9 +33,7 @@ local moduleCache = {}
 local function load(path)
     if not endswith(path, suffix) then
         local prefix = (suffix ~= "dll") and "lib" or ""
-        print(path, '--->')
         path = pathjoin(dirname(path), prefix .. basename(path) .. '.' .. suffix)
-        print(path)
     end
     
     if moduleCache[path] then return moduleCache[path] end
