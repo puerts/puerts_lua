@@ -1,8 +1,8 @@
 local puerts = require "puerts"
 
-local hello = puerts.load("./puerts_hello_addon/puerts_hello_addon")
+local puerts_test_addon = puerts.load("./puerts_addon_demos/addon_test/puerts_test_addon")
 
-local TestClass = hello.TestClass
+local TestClass = puerts_test_addon.TestClass
 
 --static function
 TestClass.Overload();
@@ -77,7 +77,7 @@ sr = ref("ts msg for ptr");
 obj:StrPtr(sr);
 print("$unref<string>:" .. unref(sr))
 
-local AdvanceTestClass = hello.AdvanceTestClass;
+local AdvanceTestClass = puerts_test_addon.AdvanceTestClass;
 local obj2  = AdvanceTestClass(100);
 
 obj2:StdFunctionTest(function (x, y) 

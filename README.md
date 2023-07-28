@@ -12,12 +12,12 @@ cmake --build . --config Release
 ## run hello.lua
 
 ``` bash
-git clone https://github.com/puerts/puerts_hello_addon.git
-cd puerts_hello_addon/
+git clone https://github.com/puerts/puerts_addon_demos.git
+cd puerts_addon_demos/addon_test
 mkdir build
 cd build/
 cmake ..
 cmake --build . --config Release
-cd ..
+cd ../../..
 lua hello.lua
 ```
