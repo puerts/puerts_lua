@@ -1,6 +1,6 @@
 local puerts = require "puerts"
 
-local hello = puerts.load("./hello")
+local hello = puerts.load("./puerts_hello_addon/puerts_hello_addon")
 
 local TestClass = hello.TestClass
 
