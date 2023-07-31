@@ -2,7 +2,7 @@ package = "puerts"
 version = "0.0.1-1"
 source = {
    url = "git+https://github.com/puerts/puerts_lua.git",
-   brach = "master"
+   branch = "master"
 }
 description = {
    summary = "puerts for lua",
