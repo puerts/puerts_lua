@@ -1,5 +1,7 @@
-project (puerts_lua)
 cmake_minimum_required(VERSION 2.8)
+set (CMAKE_CXX_STANDARD 14)
+
+project (puerts_lua)
 
 find_package(Lua REQUIRED)
 
@@ -15,3 +17,4 @@ set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
 target_link_libraries(${PROJECT_NAME} ${LUA_LIBRARIES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${LUA_INCLUDE_DIR})
 set_target_properties(${PROJECT_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
+
