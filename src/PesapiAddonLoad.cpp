@@ -7,8 +7,7 @@
  */
 
 #include "pesapi.h"
-#include "lua.h"
-#include "lauxlib.h"
+#include "lua.hpp"
 #include "CppObjectMapper.h"
 
 #ifdef WIN32

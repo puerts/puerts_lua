@@ -8,8 +8,7 @@
 
 #pragma once
 
-#include "lua.h"
-#include "lauxlib.h"
+#include "lua.hpp"
 
 #include <map>
 #include "JSClassRegister.h"

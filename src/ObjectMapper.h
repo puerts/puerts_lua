@@ -10,8 +10,7 @@
 
 #include "JSClassRegister.h"
 
-#include "lua.h"
-#include "lauxlib.h"
+#include "lua.hpp"
 
 #include <memory>
 
