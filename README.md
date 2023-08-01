@@ -1,6 +1,6 @@
 # puerts for lua
 
-## build
+## manual build
 
 ``` bash
 mkdir build
@@ -9,15 +9,12 @@ cmake ..
 cmake --build . --config Release
 ```
 
-## run hello.lua
+## install by luarocks
 
 ``` bash
-git clone https://github.com/puerts/puerts_addon_demos.git
-cd puerts_addon_demos/addon_test
-mkdir build
-cd build/
-cmake ..
-cmake --build . --config Release
-cd ../../..
-lua hello.lua
+luarocks install puerts
 ```
+
+## examples
+
+[puerts_addon_demos](https://github.com/puerts/puerts_addon_demos)
