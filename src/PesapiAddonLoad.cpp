@@ -104,8 +104,16 @@ int load_dll(lua_State *L) {
         lua_pushstring(L, mn);
         return 1;
     } else {
-        dlclose(handle);
-        return luaL_error(L, "can find entry");
+        std::string VersionEntryName = STRINGIFY(PESAPI_MODULE_VERSION());
+        auto Ver = (int (*)())(uintptr_t)dlsym(handle, VersionEntryName.c_str()); 
+        if (!Ver) {
+            dlclose(handle);
+            return luaL_error(L, "can find entry");
+        } else {
+            int pesapi_ver = Ver();
+            dlclose(handle);
+            return luaL_error(L, "pesapi version mismatch, expect: %d, but got: %d", PESAPI_VERSION, pesapi_ver);
+        }
     }
 }
 
