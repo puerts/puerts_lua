@@ -320,8 +320,9 @@ void* pesapi_get_constructor_userdata(pesapi_callback_info pinfo)
     return lua_touserdata(pinfo->L, lua_upvalueindex(1));
 }
 
-void pesapi_add_return(pesapi_callback_info pinfo, pesapi_value value)
+void pesapi_add_return(pesapi_callback_info pinfo, pesapi_value pvalue)
 {
+    lua_pushvalue(pinfo->L, reinterpret_cast<intptr_t>(pvalue));
     pinfo->RetNum++;
 }
 
@@ -452,7 +453,7 @@ void pesapi_set_property(pesapi_env env, pesapi_value pobject, const char* key, 
 pesapi_value pesapi_get_property_uint32(pesapi_env env, pesapi_value pobject, uint32_t key)
 {
     lua_State * L = reinterpret_cast<lua_State *>(env);
-    lua_rawgeti(L, reinterpret_cast<intptr_t>(pobject), key);
+    lua_rawgeti(L, reinterpret_cast<intptr_t>(pobject), key + 1);
     return reinterpret_cast<pesapi_value>(lua_gettop(L));
 }
 
@@ -460,7 +461,7 @@ void pesapi_set_property_uint32(pesapi_env env, pesapi_value pobject, uint32_t k
 {
     lua_State * L = reinterpret_cast<lua_State *>(env);
     lua_pushvalue(L, reinterpret_cast<intptr_t>(pvalue));
-    lua_rawseti(L, reinterpret_cast<intptr_t>(pobject), key);
+    lua_rawseti(L, reinterpret_cast<intptr_t>(pobject), key + 1);
 }
 
 static int debug_traceback(lua_State *L) {
