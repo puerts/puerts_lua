@@ -89,6 +89,13 @@ pesapi_value pesapi_create_binary(pesapi_env env, void* bin, size_t length)
     return reinterpret_cast<pesapi_value>(lua_gettop(L));
 }
 
+pesapi_value pesapi_create_array(pesapi_env env)
+{
+    lua_State * L = reinterpret_cast<lua_State *>(env);
+    lua_createtable(L, 0, 0);
+    return reinterpret_cast<pesapi_value>(lua_gettop(L));
+}
+
 bool pesapi_get_value_bool(pesapi_env env, pesapi_value pvalue)
 {
     lua_State * L = reinterpret_cast<lua_State *>(env);
@@ -135,6 +142,12 @@ void* pesapi_get_value_binary(pesapi_env env, pesapi_value pvalue, size_t* bufsi
 {
     lua_State * L = reinterpret_cast<lua_State *>(env);
     return const_cast<char*>(lua_tolstring(L, reinterpret_cast<intptr_t>(pvalue), bufsize));
+}
+
+uint32_t pesapi_get_array_length(pesapi_env env, pesapi_value pvalue)
+{
+    lua_State * L = reinterpret_cast<lua_State *>(env);
+    return (uint32_t)luaL_len (L, reinterpret_cast<intptr_t>(pvalue));
 }
 
 bool pesapi_is_null(pesapi_env env, pesapi_value pvalue)
@@ -207,6 +220,11 @@ bool pesapi_is_binary(pesapi_env env, pesapi_value pvalue)
 {
     lua_State * L = reinterpret_cast<lua_State *>(env);
     return lua_isstring(L, reinterpret_cast<intptr_t>(pvalue));
+}
+
+bool pesapi_is_array(pesapi_env env, pesapi_value pvalue)
+{
+    return pesapi_is_object(env, pvalue);
 }
 
 pesapi_value pesapi_create_native_object(pesapi_env env, const void* class_id, void* object_ptr, bool copy)
