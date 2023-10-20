@@ -1,5 +1,5 @@
 package = "puerts"
-version = "0.0.4-1"
+version = "0.0.5-1"
 source = {
    url = "git+https://github.com/puerts/puerts_lua.git",
    branch = "master"
